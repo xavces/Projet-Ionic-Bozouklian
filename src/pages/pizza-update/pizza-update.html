@@ -1,0 +1,41 @@
+<!--
+  Generated template for the PizzaUpdatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>pizzaUpdate</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img [src]="pizzaToUpdate.picture" *ngIf="pizzaToUpdate.picture" />
+
+    <ion-item>
+      <ion-label color="primary" stacked>Nom</ion-label>
+      <ion-input type="text" placeholder="Nom" [(ngModel)]="pizzaToUpdate.name"></ion-input>
+    </ion-item>
+  
+    <p>
+      <ion-item>
+        <ion-label color="primary" stacked>Description</ion-label>
+        <ion-textarea text-wrap type="text" placeholder="Description" [(ngModel)]="pizzaToUpdate.desc"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Prix</ion-label>
+        <ion-input type="text" placeholder="Prix" [(ngModel)]="pizzaToUpdate.price"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Ingrédients</ion-label>
+        <ion-textarea type="text" placeholder="Ingrédients" [(ngModel)]="pizzaToUpdate.ingredients"></ion-textarea>
+      </ion-item>
+    </p>
+    <button class="valid-button" (tap)="update()" ion-button icon-start>
+      <ion-icon ios="ios-create" md="md-create"></ion-icon> Modifier
+    </button>
+</ion-content>

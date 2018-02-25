@@ -1,0 +1,63 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>pizzaAdd</ion-title>
+    <button ion-button small (click)="addAPizza()">
+      Nouvelle Pizza
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <h4>Création d'une Pizza</h4>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Nom de la pizza</ion-label>
+    <ion-input type="text" placeholder="Nom de la pizza" [(ngModel)]="pizzaAdd.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Description</ion-label>
+    <ion-textarea type="text" placeholder="Description" [(ngModel)]="pizzaAdd.desc"></ion-textarea>
+  </ion-item>
+
+  <!-- Image -->
+    <ion-label color="primary" stacked>Image de la pizza</ion-label>
+    <button class="primary-button" *ngIf="!base64Image" ion-button block (tap)="takePicture()">Prendre une photo</button><br />
+    <div *ngIf="base64Image">
+      <button block (tap)="takePicture()">
+        <img [src]="base64Image" *ngIf="base64Image" />
+      </button>
+    </div>
+
+  <button class="primary-button" *ngIf="!imageImported" ion-button block (tap)="importPicture()">Importer une photo</button><br />
+  <div *ngIf="imageImported">
+    <button block (tap)="importPicture()">
+      <img [src]="imageImported" *ngIf="imageImported"  />
+    </button>
+  </div>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Prix</ion-label>
+    <ion-input type="number" placeholder="Prix" [(ngModel)]="pizzaAdd.price" (change)="changePrice(pizzaAdd.price)"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-list-header>
+      Ingrédients
+    </ion-list-header>
+    <ion-item text-wrap *ngFor="let ingred of ingredients">
+      {{ ingred }}
+    </ion-item>
+  </ion-list>
+
+  <button (tap)="selectIngredients()" ion-button icon-start>
+    <ion-icon ios="ios-hammer" md="md-hammer"></ion-icon> Ingrédients
+  </button>
+  <button class="valid-button" (tap)="create()" ion-button icon-end>
+    Créer !
+  </button>
+</ion-content>

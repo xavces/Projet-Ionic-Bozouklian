@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Panier</ion-title>
+    <button ion-button small (click)="backToHome()">
+      Accueil
+    </button>
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content padding>
+  <div style="margin-left: auto;
+  margin-right: auto;
+  text-align: center;">
+    <ion-card class="pizzaCard" *ngFor="let items of pizzaArray; let i = index" [attr.data-index]="i">
+        <img class="pizzaPicture" [src]="items.picture" *ngIf="items.picture" />
+        <ion-card-content>
+          <ion-card-title>
+            {{ items.name }}
+          </ion-card-title>
+          <p>
+            <b>Prix :</b> {{items.price * quantityArray[i]}}  € <br />
+            <b>Quantité :</b> {{quantityArray[i]}}
+          </p>
+          <button (tap)="oneLessPizza(i)" ion-button>
+            <ion-icon ios="ios-remove-circle" md="md-remove-circle"></ion-icon>
+          </button>
+          <button (tap)="oneMorePizza(i)" ion-button>
+            <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+          </button>
+          <button (tap)="deletePizza(i)" ion-button color="save">
+            <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+          </button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+</ion-content>

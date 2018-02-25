@@ -1,0 +1,26 @@
+<!--
+  Generated template for the PizzaDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>pizzaDetails</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <img [src]="pizza.picture" *ngIf="pizza.picture" />
+  <h2>{{ pizza.name }}</h2>
+  <p>
+    <b>Description:</b> {{pizza.desc}} <br />
+    <b>Prix:</b> {{ pizza.price }} €<br />
+    <b>Ingrédients:</b> {{ pizza.ingredients }}
+  </p>
+
+</ion-content>

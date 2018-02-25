@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+    <button ion-button small (click)="changeRole()">
+        Admin
+      </button>
+      <button ion-button small (click)="cart()">
+        Panier
+      </button>
+      <button ion-button small (click)="addAPizza()">
+        Nouvelle Pizza
+      </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <!-- A DEBUG !! 
+    <ion-searchbar
+    [(ngModel)]="pizzaId"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="locateId()"
+    (ionCancel)="locateId()"
+    placeholder="ID de la pizza..">
+  </ion-searchbar>
+-->
+<div style="margin-left: auto;
+margin-right: auto;
+text-align: center;">
+  <button *ngFor="let items of pizzaArray">
+
+    <ion-card class="pizzaCard" >
+      <ion-card-header>
+          <button  style="float: right;" ion-button icon-only (tap)="addToCart(items)">
+              <span class="sized-mini">+</span> <ion-icon ios="ios-cart" md="md-cart"></ion-icon>
+            </button>
+      </ion-card-header>
+
+      <div (tap)="showPizza(items)">
+      <img class="pizzaPicture" [src]="items.picture" *ngIf="items.picture" />
+      <ion-card-content>
+        <ion-card-title>
+          {{ items.name }}
+        </ion-card-title>
+
+        <p>
+          <b>Prix :</b> {{items.price}} €
+        </p>
+      </ion-card-content>
+      </div>
+      <ion-row *ngIf="admin" no-padding>
+          <ion-col>
+            <button (tap)="updatePizza(items)" ion-button clear small color="danger" icon-start>
+              <ion-icon ios="ios-create" md="md-create"></ion-icon>
+              Modifier
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button (tap)="deletePizza(items)" ion-button clear small color="danger" icon-start>
+              <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+              Supprimer
+            </button>
+          </ion-col>
+        </ion-row>
+    </ion-card>
+  </button>
+  </div>
+
+
+</ion-content>
